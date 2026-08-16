@@ -52,10 +52,10 @@ export type Ticket = {
   date: string | null;
 };
 
-export const customers = customersRaw as Customer[];
-export const contracts = contractsRaw as Contract[];
-export const payments = paymentsRaw as Payment[];
-export const tickets = ticketsRaw as Ticket[];
+export const customers = customersRaw as unknown as Customer[];
+export const contracts = contractsRaw as unknown as Contract[];
+export const payments = paymentsRaw as unknown as Payment[];
+export const tickets = ticketsRaw as unknown as Ticket[];
 
 export type Filters = {
   segment: string;
