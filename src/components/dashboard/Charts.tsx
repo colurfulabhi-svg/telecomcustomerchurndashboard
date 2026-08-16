@@ -163,7 +163,7 @@ export function TrendChart({
         </defs>
         <CartesianGrid vertical={false} stroke="var(--border)" />
         <XAxis dataKey="label" minTickGap={16} {...axis} />
-        <YAxis {...axis} tickFormatter={valueFormatter} />
+        <YAxis {...axis} tickFormatter={(v: number) => (valueFormatter ? valueFormatter(v) : String(v))} />
         <Tooltip
           contentStyle={tooltipStyle}
           formatter={(v: number) => (valueFormatter ? valueFormatter(v) : v)}
