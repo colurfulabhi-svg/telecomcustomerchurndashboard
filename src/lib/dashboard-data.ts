@@ -211,13 +211,19 @@ export function monthlySeries<T>(
 }
 
 export const formatINR = (value: number) => {
-  if (value >= 1_000_000) return `₹${(value / 1_000_000).toFixed(2)}M`;
-  if (value >= 1_000) return `₹${(value / 1_000).toFixed(1)}K`;
+  const abs = Math.abs(value);
+  if (abs >= 10_000_000) return `₹${(value / 10_000_000).toFixed(2)} Cr`;
+  if (abs >= 100_000) return `₹${(value / 100_000).toFixed(2)} L`;
+  if (abs >= 1_000) return `₹${new Intl.NumberFormat("en-IN").format(Math.round(value))}`;
   return `₹${value.toFixed(0)}`;
 };
 
+export const formatINRFull = (value: number) =>
+  `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(Math.round(value))}`;
+
 export const formatNumber = (value: number) =>
   new Intl.NumberFormat("en-IN").format(Math.round(value));
+
 
 export const CHART_COLORS = [
   "var(--chart-1)",
