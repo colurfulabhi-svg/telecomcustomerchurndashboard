@@ -43,19 +43,27 @@ export function OverviewView({ scope }: { scope: Scope }) {
 
   return (
     <div className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
-        <KpiCard label="Total Customers" value={formatNumber(total)} icon={Users} tone="blue" />
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
+        <KpiCard
+          label="Total Customers"
+          value={formatNumber(total)}
+          icon={Users}
+          tone="blue"
+          info="Number of unique customers matching the current filters."
+        />
         <KpiCard
           label="Churned Customers"
           value={formatNumber(churnedCustomers)}
           icon={UserMinus}
           tone="violet"
+          info="Customers with at least one contract marked as churned."
         />
         <KpiCard
           label="Churn Rate"
           value={`${churnRate.toFixed(2)}%`}
           icon={Percent}
           tone="red"
+          info="Churned customers divided by total customers in the current selection."
         />
         <KpiCard
           label="Revenue Collected"
@@ -63,18 +71,21 @@ export function OverviewView({ scope }: { scope: Scope }) {
           hint={`${formatNumber(paid.length)} paid invoices`}
           icon={IndianRupee}
           tone="green"
+          info="Sum of all invoice amounts with a Paid status. K = thousand, M = million rupees."
         />
         <KpiCard
           label="Avg Monthly Charges"
           value={formatINR(avgCharges)}
           icon={CreditCard}
           tone="amber"
+          info="Average invoice amount across all payments, paid or not."
         />
         <KpiCard
           label="Avg Satisfaction"
           value={`${avgScore.toFixed(2)} / 5`}
           icon={Star}
           tone="cyan"
+          info="Average support ticket satisfaction score, on a 1 to 5 scale."
         />
       </div>
 
