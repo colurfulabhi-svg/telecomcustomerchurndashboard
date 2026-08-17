@@ -47,6 +47,7 @@ export function OverviewView({ scope }: { scope: Scope }) {
         <KpiCard
           label="Total Customers"
           value={formatNumber(total)}
+          hint="unique customers"
           icon={Users}
           tone="blue"
           info="Number of unique customers matching the current filters."
@@ -54,13 +55,15 @@ export function OverviewView({ scope }: { scope: Scope }) {
         <KpiCard
           label="Churned Customers"
           value={formatNumber(churnedCustomers)}
+          hint={`${formatNumber(churnedContracts.length)} churned contracts`}
           icon={UserMinus}
           tone="violet"
           info="Customers with at least one contract marked as churned."
         />
         <KpiCard
           label="Churn Rate"
-          value={`${churnRate.toFixed(2)}%`}
+          value={`${churnRate.toFixed(1)}%`}
+          hint={`${formatNumber(churnedCustomers)} of ${formatNumber(total)}`}
           icon={Percent}
           tone="red"
           info="Churned customers divided by total customers in the current selection."
@@ -68,26 +71,29 @@ export function OverviewView({ scope }: { scope: Scope }) {
         <KpiCard
           label="Revenue Collected"
           value={formatINR(revenue)}
-          hint={`${formatNumber(paid.length)} paid invoices`}
+          hint={`${formatINRFull(revenue)} · ${formatNumber(paid.length)} invoices`}
           icon={IndianRupee}
           tone="green"
-          info="Sum of all invoice amounts with a Paid status. K = thousand, M = million rupees."
+          info={`Sum of all invoice amounts with a Paid status: ${formatINRFull(revenue)}. L = lakh, Cr = crore.`}
         />
         <KpiCard
           label="Avg Monthly Charges"
-          value={formatINR(avgCharges)}
+          value={formatINRFull(avgCharges)}
+          hint="per invoice"
           icon={CreditCard}
           tone="amber"
           info="Average invoice amount across all payments, paid or not."
         />
         <KpiCard
           label="Avg Satisfaction"
-          value={`${avgScore.toFixed(2)} / 5`}
+          value={avgScore.toFixed(2)}
+          hint="out of 5"
           icon={Star}
           tone="cyan"
           info="Average support ticket satisfaction score, on a 1 to 5 scale."
         />
       </div>
+
 
       <div className="grid gap-4 xl:grid-cols-3">
         <ChartCard
