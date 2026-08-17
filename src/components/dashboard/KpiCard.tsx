@@ -28,42 +28,46 @@ export function KpiCard({
   tone?: keyof typeof tones;
 }) {
   return (
-    <div className="kpi-gradient flex items-start gap-3 rounded-xl border border-border p-4 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
-      <span
-        className={cn(
-          "flex size-11 shrink-0 items-center justify-center rounded-full",
-          tones[tone],
-        )}
-      >
-        <Icon className="size-5" />
-      </span>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-start gap-1">
-          <p className="min-w-0 flex-1 text-xs font-semibold uppercase leading-snug tracking-wide text-muted-foreground">
-            {label}
-          </p>
-          {info ? (
-            <Popover>
-              <PopoverTrigger
-                aria-label={`About ${label}`}
-                className="-mr-1 -mt-0.5 shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Info className="size-3.5" />
-              </PopoverTrigger>
-              <PopoverContent align="end" className="w-64 text-xs leading-relaxed">
-                <p className="mb-1 font-semibold">{label}</p>
-                <p className="text-muted-foreground">{info}</p>
-              </PopoverContent>
-            </Popover>
-          ) : null}
-        </div>
-        <p className="font-display break-words text-xl font-bold leading-tight sm:text-2xl">
-          {value}
+    <div className="kpi-gradient flex h-full min-h-[112px] flex-col justify-between gap-2 rounded-xl border border-border p-4 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
+      <div className="flex items-start gap-2">
+        <p className="min-w-0 flex-1 text-[11px] font-semibold uppercase leading-snug tracking-wide text-muted-foreground">
+          {label}
         </p>
-        {hint ? (
-          <p className="text-[11px] leading-snug text-muted-foreground">{hint}</p>
+        {info ? (
+          <Popover>
+            <PopoverTrigger
+              aria-label={`About ${label}`}
+              className="-mr-1 -mt-1 shrink-0 rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Info className="size-3.5" />
+            </PopoverTrigger>
+            <PopoverContent align="end" className="w-64 text-xs leading-relaxed">
+              <p className="mb-1 font-semibold">{label}</p>
+              <p className="text-muted-foreground">{info}</p>
+            </PopoverContent>
+          </Popover>
         ) : null}
+      </div>
+
+      <div className="flex items-end gap-3">
+        <span
+          className={cn(
+            "flex size-10 shrink-0 items-center justify-center rounded-full",
+            tones[tone],
+          )}
+        >
+          <Icon className="size-5" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="font-display truncate text-2xl font-bold leading-none tabular-nums">
+            {value}
+          </p>
+          <p className="mt-1 truncate text-[11px] leading-snug text-muted-foreground">
+            {hint ?? "\u00A0"}
+          </p>
+        </div>
       </div>
     </div>
   );
 }
+
