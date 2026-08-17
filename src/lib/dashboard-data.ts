@@ -158,8 +158,8 @@ export function applyFilters(filters: Filters): Scope {
 export const countBy = <T,>(rows: T[], key: (row: T) => string | null | undefined) => {
   const map = new Map<string, number>();
   for (const row of rows) {
-    const k = key(row);
-    if (!k) continue;
+    const raw = key(row);
+    const k = !raw || raw.toLowerCase() === "null" ? "Unknown" : raw;
     map.set(k, (map.get(k) ?? 0) + 1);
   }
   return map;

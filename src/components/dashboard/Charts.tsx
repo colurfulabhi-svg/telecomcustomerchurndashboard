@@ -49,10 +49,10 @@ export function HorizontalBars({
   const sum = total ?? data.reduce((acc, d) => acc + d.value, 0);
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={data} layout="vertical" margin={{ left: 8, right: 48, top: 4 }}>
+      <BarChart data={data} layout="vertical" margin={{ left: 0, right: 44, top: 4 }}>
         <CartesianGrid horizontal={false} stroke="var(--border)" />
         <XAxis type="number" {...axis} />
-        <YAxis type="category" dataKey="name" width={110} {...axis} />
+        <YAxis type="category" dataKey="name" width={92} {...axis} />
         <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)" }} />
         <Bar dataKey="value" radius={[0, 4, 4, 0]} fill={CHART_COLORS[color % 6]}>
           <LabelList
@@ -61,7 +61,7 @@ export function HorizontalBars({
             fontSize={11}
             fill="var(--foreground)"
             formatter={(v: number) =>
-              sum ? `${v} (${((v / sum) * 100).toFixed(1)}%)` : `${v}`
+              sum ? `${v} · ${((v / sum) * 100).toFixed(0)}%` : `${v}`
             }
           />
         </Bar>
@@ -83,7 +83,7 @@ export function VerticalBars({
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data} margin={{ top: 20, right: 8, left: -16 }}>
         <CartesianGrid vertical={false} stroke="var(--border)" />
-        <XAxis dataKey="name" interval={0} {...axis} />
+        <XAxis dataKey="name" interval={0} height={44} angle={-15} textAnchor="end" {...axis} />
         <YAxis {...axis} />
         <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "var(--muted)" }} />
         <Bar dataKey="value" radius={[4, 4, 0, 0]} fill={CHART_COLORS[color % 6]}>

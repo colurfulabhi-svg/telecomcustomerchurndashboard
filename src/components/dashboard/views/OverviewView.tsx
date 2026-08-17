@@ -91,23 +91,23 @@ export function OverviewView({ scope }: { scope: Scope }) {
         </ChartCard>
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
         <ChartCard title="Churn by Segment">
-          <HorizontalBars data={bySegment} color={0} height={220} />
+          <HorizontalBars data={bySegment} color={0} height={240} />
         </ChartCard>
         <ChartCard title="Churn by State (Top 8)">
-          <HorizontalBars data={byState} color={2} height={220} />
+          <HorizontalBars data={byState} color={2} height={240} />
         </ChartCard>
         <ChartCard title="Churn by Gender">
           <Donut
             data={byGender}
-            height={220}
+            height={240}
             centerLabel="Churned"
             centerValue={formatNumber(churnedCust.length)}
           />
         </ChartCard>
         <ChartCard title="Churn by Reason">
-          <HorizontalBars data={byReason} color={4} height={220} />
+          <HorizontalBars data={byReason} color={4} height={240} />
         </ChartCard>
       </div>
     </div>
