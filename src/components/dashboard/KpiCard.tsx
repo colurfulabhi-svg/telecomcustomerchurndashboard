@@ -59,10 +59,10 @@ export function KpiCard({
           <Icon className="size-5" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="font-display truncate text-2xl font-bold leading-none tabular-nums">
+          <p className="font-display truncate text-[1.6rem] font-bold leading-none tabular-nums">
             {value}
           </p>
-          <p className="mt-1 truncate text-[11px] leading-snug text-muted-foreground">
+          <p className="mt-1.5 truncate text-[11px] leading-snug text-muted-foreground">
             {hint ?? "\u00A0"}
           </p>
         </div>
