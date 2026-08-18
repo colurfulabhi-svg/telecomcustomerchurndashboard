@@ -28,7 +28,7 @@ export function KpiCard({
   tone?: keyof typeof tones;
 }) {
   return (
-    <div className="kpi-gradient flex h-full min-h-[112px] flex-col justify-between gap-2 rounded-xl border border-border p-4 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
+    <div className="kpi-gradient flex h-full min-h-[132px] flex-col justify-between gap-3 rounded-xl border border-border p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start gap-2">
         <p className="min-w-0 flex-1 text-[11px] font-semibold uppercase leading-snug tracking-wide text-muted-foreground">
           {label}
@@ -59,10 +59,10 @@ export function KpiCard({
           <Icon className="size-5" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="font-display truncate text-2xl font-bold leading-none tabular-nums">
+          <p className="font-display break-words text-[1.55rem] font-bold leading-tight tabular-nums">
             {value}
           </p>
-          <p className="mt-1 truncate text-[11px] leading-snug text-muted-foreground">
+          <p className="mt-1.5 truncate text-[11px] leading-snug text-muted-foreground">
             {hint ?? "\u00A0"}
           </p>
         </div>
