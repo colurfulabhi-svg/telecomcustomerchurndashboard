@@ -5,6 +5,8 @@ and support performance in one place, with cross-cutting filters and drill-down 
 
 Built with **TanStack Start**, **React 19**, **TypeScript**, **Tailwind CSS v4** and **Recharts**.
 
+![Telecom Customer Churn Dashboard — executive overview](docs/dashboard-overview.png)
+
 ---
 
 ## Overview
